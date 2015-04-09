@@ -130,7 +130,7 @@ lines.each do |line|
   if line.include? ");"
     in_func = false
     func_name = recent_func.match(/TA_RetCode (\w+)\(/)[1]
-    if (!recent_func.start_with?("TA_RetCode TA_S_"))&& func_name == func_name.upcase
+    if (!recent_func.start_with?("TA_RetCode TA_S_")) && func_name == func_name.upcase
       funcs.push(Func.new(recent_comment, recent_func))
     end
   end

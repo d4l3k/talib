@@ -1,3 +1,7 @@
-package talib
+/*Package talib is a wrapper around the Techinal Analysis Library often used for stock/financial analysis.
 
-type double float64
+http://ta-lib.org/
+
+This is an automatically generated wrapper using Ruby, but should be straight forward to use.
+*/
+package talib
