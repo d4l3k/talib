@@ -1,4 +1,4 @@
-# talib
+# go-talib
 A Go(lang) wrapper for TA-Lib(Techinal Analysis Library) which is often used for stock/financial analysis.
 
 http://ta-lib.org/
