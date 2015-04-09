@@ -1,8 +1,27 @@
 require 'cast'
 require 'pry'
 
+$toCapitalize = %w(
+Price Bands Crows Black Inside Line Strike Stars In South Outside Conceal
+White Soldiers Abandoned Baby Advance Block Belthold Breakaway Closing Marubozu
+Swall Counterattack Dark Cloud Cover Doji Star Dragonfly Engulfing Evening
+Gap Side Gravestone Hammer Hanging Man Harami Cross High Wave Hikkake Mod
+Homing Pigeon Identical Neck Kicking By Length Ladder Bottom Long Legged
+Matching Low Mat Hold Morning On Piercing Rickshaw Rise Fall Methods Separating
+Shooting Short Spinning Top Staled Pattern Stick Sandwich Tasuki Takuri Stalled
+Thrusting Tristar Unique River Upside Period Phase Sine Reg Linear Fix Ext Point
+Min Index Max Sin Dev Rsi TriMa Osc Asin
+).sort_by(&:size)
+
 def camelize name
-  parts = name.split("_").map(&:downcase).map do |part|
+  parts = name.downcase.split("_").map do |dp|
+    part = dp.dup
+    $toCapitalize.each do |cap|
+      i = dp.index(cap.downcase)
+      if i
+        part[i...(i+cap.length)] = cap
+      end
+    end
     part[0] = part[0].upcase
     part
   end

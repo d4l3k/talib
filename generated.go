@@ -61,7 +61,7 @@ func Add(real0, real1 []float64) []float64 {
 	return outReal
 }
 
-/*Adosc - Chaikin A/D Oscillator
+/*AdOsc - Chaikin A/D Oscillator
 
 Input = High, Low, Close, Volume
 
@@ -80,7 +80,7 @@ optInSlowPeriod:(From 2 to 100000)
 Number of period for the slow MA
 
 */
-func Adosc(high, low, close, volume []float64, fastPeriod, slowPeriod int) []float64 {
+func AdOsc(high, low, close, volume []float64, fastPeriod, slowPeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -165,7 +165,7 @@ func Apo(real []float64, fastPeriod, slowPeriod, mAType int) []float64 {
 	return outReal
 }
 
-/*Aroon - Aroon
+/*AroOn - Aroon
 
 Input = High, Low
 
@@ -180,7 +180,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Aroon(high, low []float64, timePeriod int) ([]float64, []float64) {
+func AroOn(high, low []float64, timePeriod int) ([]float64, []float64) {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outAroonDown := make([]float64, len(high))
@@ -189,7 +189,7 @@ func Aroon(high, low []float64, timePeriod int) ([]float64, []float64) {
 	return outAroonDown, outAroonUp
 }
 
-/*Aroonosc - Aroon Oscillator
+/*AroOnOsc - Aroon Oscillator
 
 Input = High, Low
 
@@ -204,7 +204,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Aroonosc(high, low []float64, timePeriod int) []float64 {
+func AroOnOsc(high, low []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -265,14 +265,14 @@ func Atr(high, low, close []float64, timePeriod int) []float64 {
 	return outReal
 }
 
-/*Avgprice - Average Price
+/*AvgPrice - Average Price
 
 Input = Open, High, Low, Close
 
 Output = double
 
 */
-func Avgprice(open, high, low, close []float64) []float64 {
+func AvgPrice(open, high, low, close []float64) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(open))
@@ -280,7 +280,7 @@ func Avgprice(open, high, low, close []float64) []float64 {
 	return outReal
 }
 
-/*Bbands - Bollinger Bands
+/*BBands - Bollinger Bands
 
 Input = double
 
@@ -307,7 +307,7 @@ optInMAType:
 Type of Moving Average
 
 */
-func Bbands(real []float64, timePeriod int, nbDevUp, nbDevDn float64, mAType int) ([]float64, []float64, []float64) {
+func BBands(real []float64, timePeriod int, nbDevUp, nbDevDn float64, mAType int) ([]float64, []float64, []float64) {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outRealUpperBand := make([]float64, len(real))
@@ -378,14 +378,14 @@ func Cci(high, low, close []float64, timePeriod int) []float64 {
 	return outReal
 }
 
-/*Cdl2crows - Two Crows
+/*Cdl2Crows - Two Crows
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdl2crows(open, high, low, close []float64) []int {
+func Cdl2Crows(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -393,14 +393,14 @@ func Cdl2crows(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdl3blackcrows - Three Black Crows
+/*Cdl3BlackCrows - Three Black Crows
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdl3blackcrows(open, high, low, close []float64) []int {
+func Cdl3BlackCrows(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -408,14 +408,14 @@ func Cdl3blackcrows(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdl3inside - Three Inside Up/Down
+/*Cdl3Inside - Three Inside Up/Down
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdl3inside(open, high, low, close []float64) []int {
+func Cdl3Inside(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -423,14 +423,14 @@ func Cdl3inside(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdl3linestrike - Three-Line Strike
+/*Cdl3LineStrike - Three-Line Strike
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdl3linestrike(open, high, low, close []float64) []int {
+func Cdl3LineStrike(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -438,14 +438,14 @@ func Cdl3linestrike(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdl3outside - Three Outside Up/Down
+/*Cdl3Outside - Three Outside Up/Down
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdl3outside(open, high, low, close []float64) []int {
+func Cdl3Outside(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -453,14 +453,14 @@ func Cdl3outside(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdl3starsinsouth - Three Stars In The South
+/*Cdl3StarsinSouth - Three Stars In The South
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdl3starsinsouth(open, high, low, close []float64) []int {
+func Cdl3StarsinSouth(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -468,14 +468,14 @@ func Cdl3starsinsouth(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdl3whitesoldiers - Three Advancing White Soldiers
+/*Cdl3WhiteSoldiers - Three Advancing White Soldiers
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdl3whitesoldiers(open, high, low, close []float64) []int {
+func Cdl3WhiteSoldiers(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -483,7 +483,7 @@ func Cdl3whitesoldiers(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlabandonedbaby - Abandoned Baby
+/*CdlAbandonedBaby - Abandoned Baby
 
 Input = Open, High, Low, Close
 
@@ -498,7 +498,7 @@ optInPenetration:(From 0 to TA_REAL_MAX)
 Percentage of penetration of a candle within another candle
 
 */
-func Cdlabandonedbaby(open, high, low, close []float64, penetration float64) []int {
+func CdlAbandonedBaby(open, high, low, close []float64, penetration float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -506,14 +506,14 @@ func Cdlabandonedbaby(open, high, low, close []float64, penetration float64) []i
 	return outInteger
 }
 
-/*Cdladvanceblock - Advance Block
+/*CdlAdvanceBlock - Advance Block
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdladvanceblock(open, high, low, close []float64) []int {
+func CdlAdvanceBlock(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -521,14 +521,14 @@ func Cdladvanceblock(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlbelthold - Belt-hold
+/*CdlBelthold - Belt-hold
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlbelthold(open, high, low, close []float64) []int {
+func CdlBelthold(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -536,14 +536,14 @@ func Cdlbelthold(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlbreakaway - Breakaway
+/*CdlBreakaway - Breakaway
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlbreakaway(open, high, low, close []float64) []int {
+func CdlBreakaway(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -551,14 +551,14 @@ func Cdlbreakaway(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlclosingmarubozu - Closing Marubozu
+/*CdlClosingMarubozu - Closing Marubozu
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlclosingmarubozu(open, high, low, close []float64) []int {
+func CdlClosingMarubozu(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -566,14 +566,14 @@ func Cdlclosingmarubozu(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlconcealbabyswall - Concealing Baby Swallow
+/*CdlConcealBabySwall - Concealing Baby Swallow
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlconcealbabyswall(open, high, low, close []float64) []int {
+func CdlConcealBabySwall(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -581,14 +581,14 @@ func Cdlconcealbabyswall(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlcounterattack - Counterattack
+/*CdlCounterattack - Counterattack
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlcounterattack(open, high, low, close []float64) []int {
+func CdlCounterattack(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -596,7 +596,7 @@ func Cdlcounterattack(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdldarkcloudcover - Dark Cloud Cover
+/*CdlDarkCloudCover - Dark Cloud Cover
 
 Input = Open, High, Low, Close
 
@@ -611,7 +611,7 @@ optInPenetration:(From 0 to TA_REAL_MAX)
 Percentage of penetration of a candle within another candle
 
 */
-func Cdldarkcloudcover(open, high, low, close []float64, penetration float64) []int {
+func CdlDarkCloudCover(open, high, low, close []float64, penetration float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -619,14 +619,14 @@ func Cdldarkcloudcover(open, high, low, close []float64, penetration float64) []
 	return outInteger
 }
 
-/*Cdldoji - Doji
+/*CdlDoji - Doji
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdldoji(open, high, low, close []float64) []int {
+func CdlDoji(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -634,14 +634,14 @@ func Cdldoji(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdldojistar - Doji Star
+/*CdlDojiStar - Doji Star
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdldojistar(open, high, low, close []float64) []int {
+func CdlDojiStar(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -649,14 +649,14 @@ func Cdldojistar(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdldragonflydoji - Dragonfly Doji
+/*CdlDragonflyDoji - Dragonfly Doji
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdldragonflydoji(open, high, low, close []float64) []int {
+func CdlDragonflyDoji(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -664,14 +664,14 @@ func Cdldragonflydoji(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlengulfing - Engulfing Pattern
+/*CdlEngulfing - Engulfing Pattern
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlengulfing(open, high, low, close []float64) []int {
+func CdlEngulfing(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -679,7 +679,7 @@ func Cdlengulfing(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdleveningdojistar - Evening Doji Star
+/*CdlEveningDojiStar - Evening Doji Star
 
 Input = Open, High, Low, Close
 
@@ -694,7 +694,7 @@ optInPenetration:(From 0 to TA_REAL_MAX)
 Percentage of penetration of a candle within another candle
 
 */
-func Cdleveningdojistar(open, high, low, close []float64, penetration float64) []int {
+func CdlEveningDojiStar(open, high, low, close []float64, penetration float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -702,7 +702,7 @@ func Cdleveningdojistar(open, high, low, close []float64, penetration float64) [
 	return outInteger
 }
 
-/*Cdleveningstar - Evening Star
+/*CdlEveningStar - Evening Star
 
 Input = Open, High, Low, Close
 
@@ -717,7 +717,7 @@ optInPenetration:(From 0 to TA_REAL_MAX)
 Percentage of penetration of a candle within another candle
 
 */
-func Cdleveningstar(open, high, low, close []float64, penetration float64) []int {
+func CdlEveningStar(open, high, low, close []float64, penetration float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -725,14 +725,14 @@ func Cdleveningstar(open, high, low, close []float64, penetration float64) []int
 	return outInteger
 }
 
-/*Cdlgapsidesidewhite - Up/Down-gap side-by-side white lines
+/*CdlGapSidesideWhite - Up/Down-gap side-by-side white lines
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlgapsidesidewhite(open, high, low, close []float64) []int {
+func CdlGapSidesideWhite(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -740,14 +740,14 @@ func Cdlgapsidesidewhite(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlgravestonedoji - Gravestone Doji
+/*CdlGravestoneDoji - Gravestone Doji
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlgravestonedoji(open, high, low, close []float64) []int {
+func CdlGravestoneDoji(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -755,14 +755,14 @@ func Cdlgravestonedoji(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlhammer - Hammer
+/*CdlHammer - Hammer
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlhammer(open, high, low, close []float64) []int {
+func CdlHammer(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -770,14 +770,14 @@ func Cdlhammer(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlhangingman - Hanging Man
+/*CdlHangingMan - Hanging Man
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlhangingman(open, high, low, close []float64) []int {
+func CdlHangingMan(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -785,14 +785,14 @@ func Cdlhangingman(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlharami - Harami Pattern
+/*CdlHarami - Harami Pattern
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlharami(open, high, low, close []float64) []int {
+func CdlHarami(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -800,14 +800,14 @@ func Cdlharami(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlharamicross - Harami Cross Pattern
+/*CdlHaramiCross - Harami Cross Pattern
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlharamicross(open, high, low, close []float64) []int {
+func CdlHaramiCross(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -815,14 +815,14 @@ func Cdlharamicross(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlhighwave - High-Wave Candle
+/*CdlHighWave - High-Wave Candle
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlhighwave(open, high, low, close []float64) []int {
+func CdlHighWave(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -830,14 +830,14 @@ func Cdlhighwave(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlhikkake - Hikkake Pattern
+/*CdlHikkake - Hikkake Pattern
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlhikkake(open, high, low, close []float64) []int {
+func CdlHikkake(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -845,14 +845,14 @@ func Cdlhikkake(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlhikkakemod - Modified Hikkake Pattern
+/*CdlHikkakeMod - Modified Hikkake Pattern
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlhikkakemod(open, high, low, close []float64) []int {
+func CdlHikkakeMod(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -860,14 +860,14 @@ func Cdlhikkakemod(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlhomingpigeon - Homing Pigeon
+/*CdlHomingPigeon - Homing Pigeon
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlhomingpigeon(open, high, low, close []float64) []int {
+func CdlHomingPigeon(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -875,14 +875,14 @@ func Cdlhomingpigeon(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlidentical3crows - Identical Three Crows
+/*CdlIdentical3Crows - Identical Three Crows
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlidentical3crows(open, high, low, close []float64) []int {
+func CdlIdentical3Crows(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -890,14 +890,14 @@ func Cdlidentical3crows(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlinneck - In-Neck Pattern
+/*CdlInNeck - In-Neck Pattern
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlinneck(open, high, low, close []float64) []int {
+func CdlInNeck(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -905,14 +905,14 @@ func Cdlinneck(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlinvertedhammer - Inverted Hammer
+/*CdlInvertedHammer - Inverted Hammer
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlinvertedhammer(open, high, low, close []float64) []int {
+func CdlInvertedHammer(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -920,14 +920,14 @@ func Cdlinvertedhammer(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlkicking - Kicking
+/*CdlKicking - Kicking
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlkicking(open, high, low, close []float64) []int {
+func CdlKicking(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -935,14 +935,14 @@ func Cdlkicking(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlkickingbylength - Kicking - bull/bear determined by the longer marubozu
+/*CdlKickingByLength - Kicking - bull/bear determined by the longer marubozu
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlkickingbylength(open, high, low, close []float64) []int {
+func CdlKickingByLength(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -950,14 +950,14 @@ func Cdlkickingbylength(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlladderbottom - Ladder Bottom
+/*CdlLadderBottom - Ladder Bottom
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlladderbottom(open, high, low, close []float64) []int {
+func CdlLadderBottom(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -965,14 +965,14 @@ func Cdlladderbottom(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdllongleggeddoji - Long Legged Doji
+/*CdlLongLeggedDoji - Long Legged Doji
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdllongleggeddoji(open, high, low, close []float64) []int {
+func CdlLongLeggedDoji(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -980,14 +980,14 @@ func Cdllongleggeddoji(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdllongline - Long Line Candle
+/*CdlLongLine - Long Line Candle
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdllongline(open, high, low, close []float64) []int {
+func CdlLongLine(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -995,14 +995,14 @@ func Cdllongline(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlmarubozu - Marubozu
+/*CdlMarubozu - Marubozu
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlmarubozu(open, high, low, close []float64) []int {
+func CdlMarubozu(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1010,14 +1010,14 @@ func Cdlmarubozu(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlmatchinglow - Matching Low
+/*CdlMatchingLow - Matching Low
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlmatchinglow(open, high, low, close []float64) []int {
+func CdlMatchingLow(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1025,7 +1025,7 @@ func Cdlmatchinglow(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlmathold - Mat Hold
+/*CdlMatHold - Mat Hold
 
 Input = Open, High, Low, Close
 
@@ -1040,7 +1040,7 @@ optInPenetration:(From 0 to TA_REAL_MAX)
 Percentage of penetration of a candle within another candle
 
 */
-func Cdlmathold(open, high, low, close []float64, penetration float64) []int {
+func CdlMatHold(open, high, low, close []float64, penetration float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1048,7 +1048,7 @@ func Cdlmathold(open, high, low, close []float64, penetration float64) []int {
 	return outInteger
 }
 
-/*Cdlmorningdojistar - Morning Doji Star
+/*CdlMorningDojiStar - Morning Doji Star
 
 Input = Open, High, Low, Close
 
@@ -1063,7 +1063,7 @@ optInPenetration:(From 0 to TA_REAL_MAX)
 Percentage of penetration of a candle within another candle
 
 */
-func Cdlmorningdojistar(open, high, low, close []float64, penetration float64) []int {
+func CdlMorningDojiStar(open, high, low, close []float64, penetration float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1071,7 +1071,7 @@ func Cdlmorningdojistar(open, high, low, close []float64, penetration float64) [
 	return outInteger
 }
 
-/*Cdlmorningstar - Morning Star
+/*CdlMorningStar - Morning Star
 
 Input = Open, High, Low, Close
 
@@ -1086,7 +1086,7 @@ optInPenetration:(From 0 to TA_REAL_MAX)
 Percentage of penetration of a candle within another candle
 
 */
-func Cdlmorningstar(open, high, low, close []float64, penetration float64) []int {
+func CdlMorningStar(open, high, low, close []float64, penetration float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1094,14 +1094,14 @@ func Cdlmorningstar(open, high, low, close []float64, penetration float64) []int
 	return outInteger
 }
 
-/*Cdlonneck - On-Neck Pattern
+/*CdlOnNeck - On-Neck Pattern
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlonneck(open, high, low, close []float64) []int {
+func CdlOnNeck(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1109,14 +1109,14 @@ func Cdlonneck(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlpiercing - Piercing Pattern
+/*CdlPiercing - Piercing Pattern
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlpiercing(open, high, low, close []float64) []int {
+func CdlPiercing(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1124,14 +1124,14 @@ func Cdlpiercing(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlrickshawman - Rickshaw Man
+/*CdlRickshawMan - Rickshaw Man
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlrickshawman(open, high, low, close []float64) []int {
+func CdlRickshawMan(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1139,14 +1139,14 @@ func Cdlrickshawman(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlrisefall3methods - Rising/Falling Three Methods
+/*CdlRiseFall3Methods - Rising/Falling Three Methods
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlrisefall3methods(open, high, low, close []float64) []int {
+func CdlRiseFall3Methods(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1154,14 +1154,14 @@ func Cdlrisefall3methods(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlseparatinglines - Separating Lines
+/*CdlSeparatingLines - Separating Lines
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlseparatinglines(open, high, low, close []float64) []int {
+func CdlSeparatingLines(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1169,14 +1169,14 @@ func Cdlseparatinglines(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlshootingstar - Shooting Star
+/*CdlShootingStar - Shooting Star
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlshootingstar(open, high, low, close []float64) []int {
+func CdlShootingStar(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1184,14 +1184,14 @@ func Cdlshootingstar(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlshortline - Short Line Candle
+/*CdlShortLine - Short Line Candle
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlshortline(open, high, low, close []float64) []int {
+func CdlShortLine(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1199,14 +1199,14 @@ func Cdlshortline(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlspinningtop - Spinning Top
+/*CdlSpinningTop - Spinning Top
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlspinningtop(open, high, low, close []float64) []int {
+func CdlSpinningTop(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1214,14 +1214,14 @@ func Cdlspinningtop(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlstalledpattern - Stalled Pattern
+/*CdlStalledPattern - Stalled Pattern
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlstalledpattern(open, high, low, close []float64) []int {
+func CdlStalledPattern(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1229,14 +1229,14 @@ func Cdlstalledpattern(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlsticksandwich - Stick Sandwich
+/*CdlStickSandwich - Stick Sandwich
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlsticksandwich(open, high, low, close []float64) []int {
+func CdlStickSandwich(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1244,14 +1244,14 @@ func Cdlsticksandwich(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdltakuri - Takuri (Dragonfly Doji with very long lower shadow)
+/*CdlTakuri - Takuri (Dragonfly Doji with very long lower shadow)
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdltakuri(open, high, low, close []float64) []int {
+func CdlTakuri(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1259,14 +1259,14 @@ func Cdltakuri(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdltasukigap - Tasuki Gap
+/*CdlTasukiGap - Tasuki Gap
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdltasukigap(open, high, low, close []float64) []int {
+func CdlTasukiGap(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1274,14 +1274,14 @@ func Cdltasukigap(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlthrusting - Thrusting Pattern
+/*CdlThrusting - Thrusting Pattern
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlthrusting(open, high, low, close []float64) []int {
+func CdlThrusting(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1289,14 +1289,14 @@ func Cdlthrusting(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdltristar - Tristar Pattern
+/*CdlTristar - Tristar Pattern
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdltristar(open, high, low, close []float64) []int {
+func CdlTristar(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1304,14 +1304,14 @@ func Cdltristar(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlunique3river - Unique 3 River
+/*CdlUnique3River - Unique 3 River
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlunique3river(open, high, low, close []float64) []int {
+func CdlUnique3River(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1319,14 +1319,14 @@ func Cdlunique3river(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlupsidegap2crows - Upside Gap Two Crows
+/*CdlUpsideGap2Crows - Upside Gap Two Crows
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlupsidegap2crows(open, high, low, close []float64) []int {
+func CdlUpsideGap2Crows(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1334,14 +1334,14 @@ func Cdlupsidegap2crows(open, high, low, close []float64) []int {
 	return outInteger
 }
 
-/*Cdlxsidegap3methods - Upside/Downside Gap Three Methods
+/*CdlxSideGap3Methods - Upside/Downside Gap Three Methods
 
 Input = Open, High, Low, Close
 
 Output = int
 
 */
-func Cdlxsidegap3methods(open, high, low, close []float64) []int {
+func CdlxSideGap3Methods(open, high, low, close []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(open))
@@ -1554,14 +1554,14 @@ func Floor(real []float64) []float64 {
 	return outReal
 }
 
-/*HtDcperiod - Hilbert Transform - Dominant Cycle Period
+/*HtDcPeriod - Hilbert Transform - Dominant Cycle Period
 
 Input = double
 
 Output = double
 
 */
-func HtDcperiod(real []float64) []float64 {
+func HtDcPeriod(real []float64) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -1569,14 +1569,14 @@ func HtDcperiod(real []float64) []float64 {
 	return outReal
 }
 
-/*HtDcphase - Hilbert Transform - Dominant Cycle Phase
+/*HtDcPhase - Hilbert Transform - Dominant Cycle Phase
 
 Input = double
 
 Output = double
 
 */
-func HtDcphase(real []float64) []float64 {
+func HtDcPhase(real []float64) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -1616,14 +1616,14 @@ func HtSine(real []float64) ([]float64, []float64) {
 	return outSine, outLeadSine
 }
 
-/*HtTrendline - Hilbert Transform - Instantaneous Trendline
+/*HtTrendLine - Hilbert Transform - Instantaneous Trendline
 
 Input = double
 
 Output = double
 
 */
-func HtTrendline(real []float64) []float64 {
+func HtTrendLine(real []float64) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -1631,14 +1631,14 @@ func HtTrendline(real []float64) []float64 {
 	return outReal
 }
 
-/*HtTrendmode - Hilbert Transform - Trend vs Cycle Mode
+/*HtTrendMode - Hilbert Transform - Trend vs Cycle Mode
 
 Input = double
 
 Output = int
 
 */
-func HtTrendmode(real []float64) []int {
+func HtTrendMode(real []float64) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(real))
@@ -1669,7 +1669,7 @@ func Kama(real []float64, timePeriod int) []float64 {
 	return outReal
 }
 
-/*Linearreg - Linear Regression
+/*LinearReg - Linear Regression
 
 Input = double
 
@@ -1684,7 +1684,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Linearreg(real []float64, timePeriod int) []float64 {
+func LinearReg(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -1692,7 +1692,7 @@ func Linearreg(real []float64, timePeriod int) []float64 {
 	return outReal
 }
 
-/*LinearregAngle - Linear Regression Angle
+/*LinearRegAngle - Linear Regression Angle
 
 Input = double
 
@@ -1707,7 +1707,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func LinearregAngle(real []float64, timePeriod int) []float64 {
+func LinearRegAngle(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -1715,7 +1715,7 @@ func LinearregAngle(real []float64, timePeriod int) []float64 {
 	return outReal
 }
 
-/*LinearregIntercept - Linear Regression Intercept
+/*LinearRegIntercept - Linear Regression Intercept
 
 Input = double
 
@@ -1730,7 +1730,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func LinearregIntercept(real []float64, timePeriod int) []float64 {
+func LinearRegIntercept(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -1738,7 +1738,7 @@ func LinearregIntercept(real []float64, timePeriod int) []float64 {
 	return outReal
 }
 
-/*LinearregSlope - Linear Regression Slope
+/*LinearRegSlope - Linear Regression Slope
 
 Input = double
 
@@ -1753,7 +1753,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func LinearregSlope(real []float64, timePeriod int) []float64 {
+func LinearRegSlope(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -1851,7 +1851,7 @@ func Macd(real []float64, fastPeriod, slowPeriod, signalPeriod int) ([]float64, 
 	return outMACD, outMACDSignal, outMACDHist
 }
 
-/*Macdext - MACD with controllable MA type
+/*MacdExt - MACD with controllable MA type
 
 Input = double
 
@@ -1886,7 +1886,7 @@ optInSignalMAType:
 Type of Moving Average for signal line
 
 */
-func Macdext(real []float64, fastPeriod, fastMAType, slowPeriod, slowMAType, signalPeriod, signalMAType int) ([]float64, []float64, []float64) {
+func MacdExt(real []float64, fastPeriod, fastMAType, slowPeriod, slowMAType, signalPeriod, signalMAType int) ([]float64, []float64, []float64) {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outMACD := make([]float64, len(real))
@@ -1896,7 +1896,7 @@ func Macdext(real []float64, fastPeriod, fastMAType, slowPeriod, slowMAType, sig
 	return outMACD, outMACDSignal, outMACDHist
 }
 
-/*Macdfix - Moving Average Convergence/Divergence Fix 12/26
+/*MacdFix - Moving Average Convergence/Divergence Fix 12/26
 
 Input = double
 
@@ -1911,7 +1911,7 @@ optInSignalPeriod:(From 1 to 100000)
 Smoothing for the signal line (nb of period)
 
 */
-func Macdfix(real []float64, signalPeriod int) ([]float64, []float64, []float64) {
+func MacdFix(real []float64, signalPeriod int) ([]float64, []float64, []float64) {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outMACD := make([]float64, len(real))
@@ -2003,7 +2003,7 @@ func Max(real []float64, timePeriod int) []float64 {
 	return outReal
 }
 
-/*Maxindex - Index of highest value over a specified period
+/*MaxIndex - Index of highest value over a specified period
 
 Input = double
 
@@ -2018,7 +2018,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Maxindex(real []float64, timePeriod int) []int {
+func MaxIndex(real []float64, timePeriod int) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(real))
@@ -2026,14 +2026,14 @@ func Maxindex(real []float64, timePeriod int) []int {
 	return outInteger
 }
 
-/*Medprice - Median Price
+/*MedPrice - Median Price
 
 Input = High, Low
 
 Output = double
 
 */
-func Medprice(high, low []float64) []float64 {
+func MedPrice(high, low []float64) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -2064,7 +2064,7 @@ func Mfi(high, low, close, volume []float64, timePeriod int) []float64 {
 	return outReal
 }
 
-/*Midpoint - MidPoint over period
+/*MidPoint - MidPoint over period
 
 Input = double
 
@@ -2079,7 +2079,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Midpoint(real []float64, timePeriod int) []float64 {
+func MidPoint(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2087,7 +2087,7 @@ func Midpoint(real []float64, timePeriod int) []float64 {
 	return outReal
 }
 
-/*Midprice - Midpoint Price over period
+/*MidPrice - Midpoint Price over period
 
 Input = High, Low
 
@@ -2102,7 +2102,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Midprice(high, low []float64, timePeriod int) []float64 {
+func MidPrice(high, low []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -2133,7 +2133,7 @@ func Min(real []float64, timePeriod int) []float64 {
 	return outReal
 }
 
-/*Minindex - Index of lowest value over a specified period
+/*MinIndex - Index of lowest value over a specified period
 
 Input = double
 
@@ -2148,7 +2148,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Minindex(real []float64, timePeriod int) []int {
+func MinIndex(real []float64, timePeriod int) []int {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outInteger := make([]int, len(real))
@@ -2156,7 +2156,7 @@ func Minindex(real []float64, timePeriod int) []int {
 	return outInteger
 }
 
-/*Minmax - Lowest and highest values over a specified period
+/*MinMax - Lowest and highest values over a specified period
 
 Input = double
 
@@ -2171,7 +2171,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Minmax(real []float64, timePeriod int) ([]float64, []float64) {
+func MinMax(real []float64, timePeriod int) ([]float64, []float64) {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outMin := make([]float64, len(real))
@@ -2180,7 +2180,7 @@ func Minmax(real []float64, timePeriod int) ([]float64, []float64) {
 	return outMin, outMax
 }
 
-/*Minmaxindex - Indexes of lowest and highest values over a specified period
+/*MinMaxIndex - Indexes of lowest and highest values over a specified period
 
 Input = double
 
@@ -2195,7 +2195,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Minmaxindex(real []float64, timePeriod int) ([]int, []int) {
+func MinMaxIndex(real []float64, timePeriod int) ([]int, []int) {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outMinIdx := make([]int, len(real))
@@ -2545,7 +2545,7 @@ func Sar(high, low []float64, acceleration, maximum float64) []float64 {
 	return outReal
 }
 
-/*Sarext - Parabolic SAR - Extended
+/*SarExt - Parabolic SAR - Extended
 
 Input = High, Low
 
@@ -2588,7 +2588,7 @@ optInAccelerationMaxShort:(From 0 to TA_REAL_MAX)
 Acceleration Factor maximum value for the Short direction
 
 */
-func Sarext(high, low []float64, startValue, offsetOnReverse, accelerationInitLong, accelerationLong, accelerationMaxLong, accelerationInitShort, accelerationShort, accelerationMaxShort float64) []float64 {
+func SarExt(high, low []float64, startValue, offsetOnReverse, accelerationInitLong, accelerationLong, accelerationMaxLong, accelerationInitShort, accelerationShort, accelerationMaxShort float64) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -2664,7 +2664,7 @@ func Sqrt(real []float64) []float64 {
 	return outReal
 }
 
-/*Stddev - Standard Deviation
+/*StdDev - Standard Deviation
 
 Input = double
 
@@ -2683,7 +2683,7 @@ optInNbDev:(From TA_REAL_MIN to TA_REAL_MAX)
 Nb of deviations
 
 */
-func Stddev(real []float64, timePeriod int, nbDev float64) []float64 {
+func StdDev(real []float64, timePeriod int, nbDev float64) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -2763,7 +2763,7 @@ func Stochf(high, low, close []float64, fastKPeriod, fastDPeriod, fastDMAType in
 	return outFastK, outFastD
 }
 
-/*Stochrsi - Stochastic Relative Strength Index
+/*StochRsi - Stochastic Relative Strength Index
 
 Input = double
 
@@ -2790,7 +2790,7 @@ optInFastD_MAType:
 Type of Moving Average for Fast-D
 
 */
-func Stochrsi(real []float64, timePeriod, fastKPeriod, fastDPeriod, fastDMAType int) ([]float64, []float64) {
+func StochRsi(real []float64, timePeriod, fastKPeriod, fastDPeriod, fastDMAType int) ([]float64, []float64) {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outFastK := make([]float64, len(real))
@@ -2932,7 +2932,7 @@ func Trange(high, low, close []float64) []float64 {
 	return outReal
 }
 
-/*Trima - Triangular Moving Average
+/*TriMa - Triangular Moving Average
 
 Input = double
 
@@ -2947,7 +2947,7 @@ optInTimePeriod:(From 2 to 100000)
 Number of period
 
 */
-func Trima(real []float64, timePeriod int) []float64 {
+func TriMa(real []float64, timePeriod int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(real))
@@ -3001,14 +3001,14 @@ func Tsf(real []float64, timePeriod int) []float64 {
 	return outReal
 }
 
-/*Typprice - Typical Price
+/*TypPrice - Typical Price
 
 Input = High, Low, Close
 
 Output = double
 
 */
-func Typprice(high, low, close []float64) []float64 {
+func TypPrice(high, low, close []float64) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -3016,7 +3016,7 @@ func Typprice(high, low, close []float64) []float64 {
 	return outReal
 }
 
-/*Ultosc - Ultimate Oscillator
+/*UltOsc - Ultimate Oscillator
 
 Input = High, Low, Close
 
@@ -3039,7 +3039,7 @@ optInTimePeriod3:(From 1 to 100000)
 Number of bars for 3rd period
 
 */
-func Ultosc(high, low, close []float64, timePeriod1, timePeriod2, timePeriod3 int) []float64 {
+func UltOsc(high, low, close []float64, timePeriod1, timePeriod2, timePeriod3 int) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
@@ -3074,14 +3074,14 @@ func Var(real []float64, timePeriod int, nbDev float64) []float64 {
 	return outReal
 }
 
-/*Wclprice - Weighted Close Price
+/*WclPrice - Weighted Close Price
 
 Input = High, Low, Close
 
 Output = double
 
 */
-func Wclprice(high, low, close []float64) []float64 {
+func WclPrice(high, low, close []float64) []float64 {
 	var outBegIdx C.int
 	var outNBElement C.int
 	outReal := make([]float64, len(high))
