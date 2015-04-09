@@ -1,0 +1,269 @@
+package talib
+
+// #cgo LDFLAGS: -lta_lib
+// #include "ta-lib/ta_libc.h"
+import "C"
+
+import (
+	"fmt"
+	"unsafe"
+)
+
+func init() {
+	n, err := C.TA_Initialize()
+	if n != 0 {
+		panic(fmt.Sprintf("ta-lib status is %d %s", n, err))
+	}
+}
+
+//Acos - Vector Trigonometric ACos
+func Acos(input []float64) []float64 {
+	out := make([]float64, len(input))
+	var outBegIdx, outNBElement C.int
+	C.TA_ACOS(0, C.int(len(input)-1),
+		(*C.double)(unsafe.Pointer(&input[0])),
+		&outBegIdx, &outNBElement, (*C.double)(unsafe.Pointer(&out[0])))
+	return out
+}
+
+//AD - Chaikin A/D Line
+func AD(high, low, close, volume []float64) []float64 {
+	l := len(high)
+	out := make([]float64, l)
+	var outBegIdx, outNBElement C.int
+	C.TA_AD(0, C.int(l-1),
+		(*C.double)(unsafe.Pointer(&high[0])),
+		(*C.double)(unsafe.Pointer(&low[0])),
+		(*C.double)(unsafe.Pointer(&close[0])),
+		(*C.double)(unsafe.Pointer(&volume[0])),
+		&outBegIdx, &outNBElement, (*C.double)(unsafe.Pointer(&out[0])))
+	return out
+}
+
+//Add - Vector Arithmetic Add
+func Add(a, b []float64) []float64 {
+	l := len(a)
+	out := make([]float64, l)
+	var outBegIdx, outNBElement C.int
+	C.TA_ADD(0, C.int(l-1),
+		(*C.double)(unsafe.Pointer(&a[0])),
+		(*C.double)(unsafe.Pointer(&b[0])),
+		&outBegIdx, &outNBElement, (*C.double)(unsafe.Pointer(&out[0])))
+	return out
+}
+
+/*ADOsc - Chaikin A/D Oscillator
+
+optInFastPeriod:(From 2 to 100000)
+   Number of period for the fast MA
+
+optInSlowPeriod:(From 2 to 100000)
+   Number of period for the slow MA
+*/
+func ADOsc(high, low, close, volume []float64, fastPeriod, slowPeriod int) []float64 {
+	l := len(high)
+	out := make([]float64, l)
+	var outBegIdx, outNBElement C.int
+	C.TA_ADOSC(0, C.int(l-1),
+		(*C.double)(unsafe.Pointer(&high[0])),
+		(*C.double)(unsafe.Pointer(&low[0])),
+		(*C.double)(unsafe.Pointer(&close[0])),
+		(*C.double)(unsafe.Pointer(&volume[0])),
+		C.int(fastPeriod),
+		C.int(slowPeriod),
+		&outBegIdx, &outNBElement, (*C.double)(unsafe.Pointer(&out[0])))
+	return out
+}
+
+/*ADX - Average Directional Movement Index
+
+Input  = High, Low, Close
+Output = double
+
+Optional Parameters
+-------------------
+optInTimePeriod:(From 2 to 100000)
+   Number of period
+
+
+*/
+func ADX(high, low, close []float64, timePeriod int) []float64 {
+	l := len(high)
+	out := make([]float64, l)
+	var outBegIdx, outNBElement C.int
+	C.TA_ADX(0, C.int(l-1),
+		(*C.double)(unsafe.Pointer(&high[0])),
+		(*C.double)(unsafe.Pointer(&low[0])),
+		(*C.double)(unsafe.Pointer(&close[0])),
+		C.int(timePeriod),
+		&outBegIdx, &outNBElement, (*C.double)(unsafe.Pointer(&out[0])))
+	return out
+}
+
+/*ADXR - Average Directional Movement Index Rating
+
+  Input  = High, Low, Close
+  Output = double
+
+  Optional Parameters
+  -------------------
+  optInTimePeriod:(From 2 to 100000)
+     Number of period
+
+
+*/
+func ADXR(high, low, close []float64, timePeriod int) []float64 {
+	l := len(high)
+	out := make([]float64, l)
+	var outBegIdx, outNBElement C.int
+	C.TA_ADXR(0, C.int(l-1),
+		(*C.double)(unsafe.Pointer(&high[0])),
+		(*C.double)(unsafe.Pointer(&low[0])),
+		(*C.double)(unsafe.Pointer(&close[0])),
+		C.int(timePeriod),
+		&outBegIdx, &outNBElement, (*C.double)(unsafe.Pointer(&out[0])))
+	return out
+}
+
+/*APO - Absolute Price Oscillator
+
+  Input  = double
+  Output = double
+
+  Optional Parameters
+  -------------------
+  optInFastPeriod:(From 2 to 100000)
+     Number of period for the fast MA
+
+  optInSlowPeriod:(From 2 to 100000)
+     Number of period for the slow MA
+
+  optInMAType:
+     Type of Moving Average
+
+
+*/
+func APO(input []float64, fastPeriod, slowPeriod, maType int) []float64 {
+	l := len(input)
+	out := make([]float64, l)
+	var outBegIdx, outNBElement C.int
+	C.TA_APO(0, C.int(l-1),
+		(*C.double)(unsafe.Pointer(&input[0])),
+		C.int(fastPeriod),
+		C.int(slowPeriod),
+		C.TA_MAType(maType),
+		&outBegIdx, &outNBElement, (*C.double)(unsafe.Pointer(&out[0])))
+	return out
+}
+
+/*Aroon - Aroon
+
+  Input  = High, Low
+  Output = double, double
+
+  Optional Parameters
+  -------------------
+  optInTimePeriod:(From 2 to 100000)
+     Number of period
+
+
+*/
+func Aroon(high, low []float64, timePeriod int) ([]float64, []float64) {
+	l := len(high)
+	out := make([]float64, l)
+	out2 := make([]float64, l)
+	var outBegIdx, outNBElement C.int
+	C.TA_AROON(0, C.int(l-1),
+		(*C.double)(unsafe.Pointer(&high[0])),
+		(*C.double)(unsafe.Pointer(&low[0])),
+		C.int(timePeriod),
+		&outBegIdx, &outNBElement,
+		(*C.double)(unsafe.Pointer(&out[0])),
+		(*C.double)(unsafe.Pointer(&out2[0])))
+	return out, out2
+}
+
+/*AroonOsc - Aroon Oscillator
+
+  Input  = High, Low
+  Output = double
+
+  Optional Parameters
+  -------------------
+  optInTimePeriod:(From 2 to 100000)
+     Number of period
+*/
+func AroonOsc(high, low []float64, timePeriod int) []float64 {
+	l := len(high)
+	out := make([]float64, l)
+	var outBegIdx, outNBElement C.int
+	C.TA_AROONOSC(0, C.int(l-1),
+		(*C.double)(unsafe.Pointer(&high[0])),
+		(*C.double)(unsafe.Pointer(&low[0])),
+		C.int(timePeriod),
+		&outBegIdx, &outNBElement, (*C.double)(unsafe.Pointer(&out[0])))
+	return out
+}
+
+//Asin - Vector Trigonometric Asin
+func Asin(input []float64) []float64 {
+	out := make([]float64, len(input))
+	var outBegIdx, outNBElement C.int
+	C.TA_ASIN(0, C.int(len(input)-1),
+		(*C.double)(unsafe.Pointer(&input[0])),
+		&outBegIdx, &outNBElement, (*C.double)(unsafe.Pointer(&out[0])))
+	return out
+}
+
+//Atan - Vector Trigonometric Atan
+func Atan(input []float64) []float64 {
+	out := make([]float64, len(input))
+	var outBegIdx, outNBElement C.int
+	C.TA_ATAN(0, C.int(len(input)-1),
+		(*C.double)(unsafe.Pointer(&input[0])),
+		&outBegIdx, &outNBElement, (*C.double)(unsafe.Pointer(&out[0])))
+	return out
+}
+
+/*ATR - Average True Range
+
+  Input  = High, Low, Close
+  Output = double
+
+  Optional Parameters
+  -------------------
+  optInTimePeriod:(From 1 to 100000)
+     Number of period
+
+
+*/
+func ATR(high, low, close []float64, timePeriod int) []float64 {
+	l := len(high)
+	out := make([]float64, l)
+	var outBegIdx, outNBElement C.int
+	C.TA_ATR(0, C.int(l-1),
+		(*C.double)(unsafe.Pointer(&high[0])),
+		(*C.double)(unsafe.Pointer(&low[0])),
+		(*C.double)(unsafe.Pointer(&close[0])),
+		C.int(timePeriod),
+		&outBegIdx, &outNBElement, (*C.double)(unsafe.Pointer(&out[0])))
+	return out
+}
+
+/*AvgPrice - Average Price
+
+  Input  = Open, High, Low, Close
+  Output = double
+*/
+func AvgPrice(high, low, close, volume []float64) []float64 {
+	l := len(high)
+	out := make([]float64, l)
+	var outBegIdx, outNBElement C.int
+	C.TA_AVGPRICE(0, C.int(l-1),
+		(*C.double)(unsafe.Pointer(&high[0])),
+		(*C.double)(unsafe.Pointer(&low[0])),
+		(*C.double)(unsafe.Pointer(&close[0])),
+		(*C.double)(unsafe.Pointer(&volume[0])),
+		&outBegIdx, &outNBElement, (*C.double)(unsafe.Pointer(&out[0])))
+	return out
+}
