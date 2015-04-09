@@ -30,7 +30,7 @@ func main() {
 Install the dependencies then run
 
 ```
-$ go get github.com/d4l3k/talib
+$ go install github.com/d4l3k/talib
 ```
 
 ### Dependencies
