@@ -19,7 +19,8 @@ in_func = false
 funcs = []
 
 $types = {
-  "double"=> "float64"
+  "double" => "float64",
+  "TA_MAType" => "int"
 }
 
 class Func
@@ -29,7 +30,7 @@ class Func
     @name_raw = func.match(/ TA_(\w+)\(/)[1]
     @name = camelize @name_raw
     @args = func.match(/\(.*\)/)[0][1..-2].strip.split(",").map{|a| a.split(" ")}
-    @comment = "/*#{@name} - " +comment.gsub(/\/\*(\n\*\s*\w*( - )?)?/, '').gsub(/^\s*\*\s+/,"").gsub(/ +/, " ").gsub(@name_raw, @name).strip
+    @comment = "/*#{@name} - " +comment.gsub(/\/\*(\n\*\s*\w*( - )?)?/, '').gsub(/^\s*\*\s+/,"").gsub(/ +/, " ").gsub(@name_raw, @name).strip.gsub("\n", "\n\n")
   end
   def to_go
     args = []
@@ -44,7 +45,9 @@ class Func
       if arg == "startIdx"
         params << "0"
       elsif arg == "endIdx"
-        params << "C.int(len(#{@args[i+1][1]}-1))"
+        param = @args[2].last[2..-1].match(/(\w*)(\[\])?/)[1]
+        param[0] = param[0].downcase
+        params << "C.int(len(#{param})-1)"
       elsif arg.start_with? "*out"
         body << "var #{arg[1..-1]} C.#{type}"
         params << "&#{arg[1..-1]}"
@@ -62,7 +65,7 @@ class Func
           fType += "[]"
           params << "(*C.#{type})(unsafe.Pointer(&#{param}[0]))"
         else
-          params << param
+          params << "C.#{type}(#{param})"
         end
         fType += goType
         if args.last && args.last.end_with?(" "+fType)
@@ -71,7 +74,7 @@ class Func
           args << param + " " + fType
         end
       elsif arg.start_with? "out"
-        param = arg[3..-1].match(/(\w*)(\[\])?/)[1]
+        param = arg.match(/(\w*)(\[\])?/)[1]
         param[0] = param[0].downcase
         goType = $types[type.split(" ").last]
         goType = type if !goType
@@ -98,7 +101,7 @@ class Func
     s += " {\n"
     s += body.join("\n")
     s += "\n"
-    s += "C.#{@name_raw}(#{params.join(", ")})"
+    s += "C.TA_#{@name_raw}(#{params.join(", ")})"
     s += "\nreturn #{returns.join(", ")}\n"
     s += "}\n"
     s
@@ -126,7 +129,8 @@ lines.each do |line|
   end
   if line.include? ");"
     in_func = false
-    if (!recent_func.start_with?("TA_RetCode TA_S_"))&& recent_func.start_with?("TA_RetCode TA_")
+    func_name = recent_func.match(/TA_RetCode (\w+)\(/)[1]
+    if (!recent_func.start_with?("TA_RetCode TA_S_"))&& func_name == func_name.upcase
       funcs.push(Func.new(recent_comment, recent_func))
     end
   end
@@ -137,6 +141,11 @@ code = "package talib
 // #cgo LDFLAGS: -lta_lib
 // #include \"ta-lib/ta_libc.h\"
 import \"C\"
+
+import (
+  \"fmt\"
+  \"unsafe\"
+)
 
 func init() {
 	n, err := C.TA_Initialize()
