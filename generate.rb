@@ -39,7 +39,8 @@ funcs = []
 
 $types = {
   "double" => "float64",
-  "TA_MAType" => "int"
+  "TA_MAType" => "int32",
+  "int" => "int32",
 }
 
 class Func
@@ -100,7 +101,7 @@ class Func
         if arg.end_with? "[]"
           body << "#{param} := make([]#{goType}, len(#{args.first.split(" ").first}))"
           params << "(*C.#{type})(unsafe.Pointer(&#{param}[0]))"
-          returns << param
+          returns << "#{param}[:outNBElement]"
           returnTypes << "[]#{goType}"
         else
           params << "(*C.#{type})(unsafe.Pointer(&#{param}))"
